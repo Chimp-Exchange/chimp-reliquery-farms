@@ -1,0 +1,45 @@
+{
+  "name": "Reliquary Deposit",
+  "symbol": "RELIC",
+  "weth": "0x6e1723460D190B4A092a2c13BA42BcC57d71870b",
+  "multisig": "0xDC7fB85Dd2670Cb3C3CCf2f22458299AB689d99c",
+  "rewardToken": "0xfb064012a1744c6cD7aaF135A64c10a56cc9E44F",
+  "emissionRate": "10000000000",
+  "pools": [
+    {
+      "allocPoint": 100,
+      "allowPartialWithdrawals": true,
+      "levelMultipliers": [
+        100,
+        120,
+        150,
+        200,
+        300,
+        400,
+        500,
+        750
+      ],
+      "name": "Chimp Optimizer",
+      "poolToken": "0x5C2EA45ce1557b1Abc3f76ba58B41dB7cDE43CC0",
+      "requiredMaturities": [
+        0,
+        86400,
+        604800,
+        1209600,
+        2592000,
+        7776000,
+        15552000,
+        31536000
+      ],
+      "rewarderIndex": 0,
+      "tokenType": "normal"
+    }
+  ],
+  "rewarders": [
+    {
+      "parentIndex": -1,
+      "rewardMultiplier": "1000000000000000000",
+      "rewarderToken": "0xfb064012a1744c6cD7aaF135A64c10a56cc9E44F"
+    }
+  ]
+}
