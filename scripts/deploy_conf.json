@@ -1,9 +1,9 @@
 {
-  "name": "Reliquary Deposit",
-  "symbol": "RELIC",
-  "weth": "0x6e1723460D190B4A092a2c13BA42BcC57d71870b",
-  "multisig": "0xDC7fB85Dd2670Cb3C3CCf2f22458299AB689d99c",
-  "rewardToken": "0xfb064012a1744c6cD7aaF135A64c10a56cc9E44F",
+  "name": "Soft Locked Chimp",
+  "symbol": "slCHIMP",
+  "weth": "0xe78575DD3B8F57a4d62660db98a64EAd2ad4F9c9",
+  "multisig": "0xD19f62b5A721747A04b969C90062CBb85D4aAaA8",
+  "rewardToken": "0xD19f62b5A721747A04b969C90062CBb85D4aAaA8",
   "emissionRate": "10000000000",
   "pools": [
     {
@@ -12,15 +12,15 @@
       "levelMultipliers": [
         100,
         120,
+        140,
         150,
+        175,
         200,
-        300,
-        400,
-        500,
-        750
+        275,
+        350
       ],
-      "name": "Chimp Optimizer",
-      "poolToken": "0x5C2EA45ce1557b1Abc3f76ba58B41dB7cDE43CC0",
+      "name": "slCHIMP",
+      "poolToken": "0x7BDE65eB308b800a6422D59CB3a7681A379a9605",
       "requiredMaturities": [
         0,
         86400,
@@ -39,7 +39,7 @@
     {
       "parentIndex": -1,
       "rewardMultiplier": "1000000000000000000",
-      "rewarderToken": "0xfb064012a1744c6cD7aaF135A64c10a56cc9E44F"
+      "rewarderToken": "0xD19f62b5A721747A04b969C90062CBb85D4aAaA8"
     }
   ]
 }

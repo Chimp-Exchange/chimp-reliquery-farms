@@ -19,7 +19,7 @@ describe('ERC1155Converter', function () {
   let constantCurveContractInstance: Contract;
   let nftDescriptorContractInstance: Contract;
   let impersonatedSigner;
-  const accountAddress = '0xDC7fB85Dd2670Cb3C3CCf2f22458299AB689d99c';
+  const accountAddress = '0x2411A879F433460dD52f887CA5538535816aCB1F';
   const operatorRole =
     '0x523a704056dcd17bcf83bed8b68c59416dac1119be77755efe3bde0a64e46e0c';
   beforeEach(async function () {
