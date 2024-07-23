@@ -8,14 +8,13 @@ import confData from './deploy_conf.json';
 
 async function main() {
   console.log('in deploy');
-  // const OwnableCurve = await hre.ethers.getContractFactory('OwnableCurve');
+  const OwnableCurve = await hre.ethers.getContractFactory('OwnableCurve');
   const ParentRewarder = await hre.ethers.getContractFactory('ParentRewarder');
-  // const ownableCurveInstance = await OwnableCurve.deploy(confData.emissionRate);
-  // await ownableCurveInstance.deployed();
-  // console.log('OwnableCurve Instance address ', ownableCurveInstance.address);
+  const ownableCurveInstance = await OwnableCurve.deploy(confData.emissionRate);
+  await ownableCurveInstance.deployed();
+  console.log('OwnableCurve Instance address ', ownableCurveInstance.address);
   // await ownableCurveInstance.deployTransaction.wait(3);
-  const ownableCurveInstanceAddress =
-    '0x0d7f0e4968004cbaaff4f58e219ee00761cdea7c';
+  const ownableCurveInstanceAddress = ownableCurveInstance.address;
   const Reliquary = await hre.ethers.getContractFactory('Reliquary');
   const reliquaryInstance = await Reliquary.deploy(
     confData.rewardToken,

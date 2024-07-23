@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.15;
-import 'hardhat/console.sol';
+
 import "./ReliquaryEvents.sol";
 import "./interfaces/IReliquary.sol";
 import "./interfaces/IEmissionCurve.sol";
@@ -422,7 +422,6 @@ contract Reliquary is
         PositionInfo storage position = positionForId[id];
         position.poolId = pid;
         _deposit(amount, id);
-        console.log('emitting event', id, to, pid);
         emit ReliquaryEvents.CreateRelic(pid, to, id);
     }
 
@@ -594,18 +593,13 @@ contract Reliquary is
         PoolInfo storage pool = poolInfo[poolId];
         uint accRewardPerShare = pool.accRewardPerShare;
         uint lpSupply = _poolBalance(position.poolId);
-        console.log('lpSupply', lpSupply);
         uint lastRewardTime = pool.lastRewardTime;
         uint secondsSinceReward = block.timestamp - lastRewardTime;
-        console.log('secondsSinceReward', secondsSinceReward);
         if (secondsSinceReward != 0 && lpSupply != 0) {
             uint reward =
                 secondsSinceReward * _baseEmissionsPerSecond(lastRewardTime) * pool.allocPoint / totalAllocPoint;
-            console.log('reward', reward);
             accRewardPerShare += reward * ACC_REWARD_PRECISION / lpSupply;
-            console.log('accRewardPerShare', accRewardPerShare);
         }
-        console.log('position.level', position.level);
         uint leveledAmount = position.amount * levels[poolId].multipliers[position.level];
         pending = leveledAmount * accRewardPerShare / ACC_REWARD_PRECISION + position.rewardCredit - position.rewardDebt;
     }
@@ -622,8 +616,6 @@ contract Reliquary is
         if (length == 1) {
             return 0;
         }
-        console.log('block.timestamp', block.timestamp);
-        console.log('position.entry', position.entry);
         uint maturity = block.timestamp - position.entry;
         for (level = length - 1; true;) {
             if (maturity >= levelInfo.requiredMaturities[level]) {
@@ -633,7 +625,6 @@ contract Reliquary is
                 --level;
             }
         }
-        console.log('level', level);
     }
 
     /// @notice Returns the number of Reliquary pools.
@@ -799,9 +790,6 @@ contract Reliquary is
             uint weight = _findWeight(amount, amountBefore);
             uint entryBefore = position.entry;
             uint maturity = block.timestamp - entryBefore;
-            console.log('entryBefore2', block.timestamp);
-            console.log('entryBefore', entryBefore);
-            console.log(amount, amountBefore);
             position.entry = entryBefore + maturity * weight / 1e12;
         }
     }
@@ -853,10 +841,7 @@ contract Reliquary is
     function _poolBalance(uint pid) internal view returns (uint total) {
         LevelInfo storage levelInfo = levels[pid];
         uint length = levelInfo.balance.length;
-        console.log('length', length);
         for (uint i; i < length;) {
-            console.log('levelInfo.balance[i]', levelInfo.balance[i]);
-            console.log('levelInfo.multipliers[i]', levelInfo.multipliers[i]);
             total += levelInfo.balance[i] * levelInfo.multipliers[i];
             unchecked {
                 ++i;

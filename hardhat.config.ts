@@ -3,6 +3,7 @@ import '@nomiclabs/hardhat-waffle';
 import '@nomicfoundation/hardhat-verify';
 import 'solidity-coverage';
 import 'hardhat-gas-reporter';
+import 'hardhat-contract-sizer';
 // import 'ten-hardhat-plugin'
 
 dotenv.config();
@@ -49,7 +50,7 @@ const config = {
       chainId: 443,
       url: 'https://testnet.ten.xyz/v1/?token=57F2AD8B43D3732979AA08FE04F31C57BCBA620E',
       accounts: [`0x${PRIVATE_KEY}`],
-      allowUnlimitedContractSize: true,
+      // allowUnlimitedContractSize: true,
     },
   },
   etherscan: {
@@ -82,7 +83,7 @@ const config = {
     settings: {
       optimizer: {
         enabled: true,
-        runs: 200,
+        runs: 100,
       },
     },
   },

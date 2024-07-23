@@ -1,9 +1,9 @@
 {
   "name": "Soft Locked Chimp",
   "symbol": "slCHIMP",
-  "weth": "0xe78575DD3B8F57a4d62660db98a64EAd2ad4F9c9",
+  "weth": "0xBFF14bD8143e94EdDA4f7136b40b02692Ede69A8",
   "multisig": "0xD19f62b5A721747A04b969C90062CBb85D4aAaA8",
-  "rewardToken": "0xD19f62b5A721747A04b969C90062CBb85D4aAaA8",
+  "rewardToken": "0x49218437200B2DfEeb19bFCb03F5a1Be2A4adECe",
   "emissionRate": "10000000000",
   "pools": [
     {
@@ -20,7 +20,7 @@
         350
       ],
       "name": "slCHIMP",
-      "poolToken": "0x7BDE65eB308b800a6422D59CB3a7681A379a9605",
+      "poolToken": "0xdD720e89D4C9097B457f05624ca69eD8369b95c8",
       "requiredMaturities": [
         0,
         86400,
@@ -39,7 +39,7 @@
     {
       "parentIndex": -1,
       "rewardMultiplier": "1000000000000000000",
-      "rewarderToken": "0xD19f62b5A721747A04b969C90062CBb85D4aAaA8"
+      "rewarderToken": "0x49218437200B2DfEeb19bFCb03F5a1Be2A4adECe"
     }
   ]
 }
