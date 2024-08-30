@@ -7,11 +7,12 @@ dotenv.config();
 
 async function main() {
   try {
-    const ACCOUNT_ADDRESS = '0x2411A879F433460dD52f887CA5538535816aCB1F';
+    const ACCOUNT_ADDRESS = '0xD19f62b5A721747A04b969C90062CBb85D4aAaA8';
     const PRIVATE_KEY = process.env.PRIVATE_KEY;
     if (PRIVATE_KEY) {
-      const RELIQUERY_ADDRESS = '0xcaf4d0b0ea3bf12D3459e5641455f010c430a583';
-      const RPC_URL = 'https://rpc.goerli.linea.build';
+      const RELIQUERY_ADDRESS = '0x88C9F6BE8F3B6755dED80ada20087d56FbB76444';
+      const RPC_URL =
+        'https://testnet.ten.xyz/v1/?token=57F2AD8B43D3732979AA08FE04F31C57BCBA620E';
       const provider = new ethers.providers.JsonRpcProvider(RPC_URL);
       const wallet = new ethers.Wallet(PRIVATE_KEY);
       const signer = wallet.connect(provider);

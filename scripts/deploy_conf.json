@@ -1,7 +1,7 @@
 {
   "name": "Soft Locked Chimp",
   "symbol": "slCHIMP",
-  "weth": "0xBFF14bD8143e94EdDA4f7136b40b02692Ede69A8",
+  "weth": "0xb7a15563250f69DfF2d87DB3B6cA53108d0bC362",
   "multisig": "0xD19f62b5A721747A04b969C90062CBb85D4aAaA8",
   "rewardToken": "0x49218437200B2DfEeb19bFCb03F5a1Be2A4adECe",
   "emissionRate": "10000000000",
@@ -20,7 +20,7 @@
         350
       ],
       "name": "slCHIMP",
-      "poolToken": "0xdD720e89D4C9097B457f05624ca69eD8369b95c8",
+      "poolToken": "0x2d8A2553Ad2Cf716269535Df5cF6b8B3c7ed8674",
       "requiredMaturities": [
         0,
         86400,
