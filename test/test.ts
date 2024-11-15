@@ -16,8 +16,10 @@ const toBytes32 = (bn: BigNumber) => {
 };
 describe('ERC1155Converter', function () {
   let reliquaryContractInstance: Contract;
-  let constantCurveContractInstance: Contract;
+  let ownableCurveInstance: Contract;
   let nftDescriptorContractInstance: Contract;
+  let inputTokenContractInstance: Contract;
+  let rewardTokenContractInstance: Contract;
   let impersonatedSigner;
   const accountAddress = '0xD19f62b5A721747A04b969C90062CBb85D4aAaA8';
   const operatorRole =
@@ -26,12 +28,18 @@ describe('ERC1155Converter', function () {
     // const accounst = await ethers.getSigners();
     const Reliquary = await ethers.getContractFactory('Reliquary');
     const NFTDescriptor = await ethers.getContractFactory('NFTDescriptor');
-    const ConstantCurve = await ethers.getContractFactory('Constant');
-    const constantCurveContract = await ConstantCurve.deploy();
-    constantCurveContractInstance = await constantCurveContract.deployed();
+    const OwnableCurve = await ethers.getContractFactory('OwnableCurve');
+    const InputTokenContract = await ethers.getContractFactory('MockErc20');
+    const RewardTokenContract = await ethers.getContractFactory('MockErc20');
+    const inputTokenContract = await InputTokenContract.deploy()
+    const rewardTokenContract = await RewardTokenContract.deploy();
+    inputTokenContractInstance = await inputTokenContract.deployed();
+    rewardTokenContractInstance = await rewardTokenContract.deployed();
+    const ownableCurve = await OwnableCurve.deploy();
+    ownableCurveInstance = await ownableCurve.deployed();
     const reliquaryContract = await Reliquary.deploy(
       confData.rewardToken,
-      constantCurveContractInstance.address,
+      ownableCurveInstance.address,
       confData.name,
       confData.symbol
     );
@@ -44,25 +52,18 @@ describe('ERC1155Converter', function () {
   // test to create new pool
   it('Should create new pool', async function () {
     const [owner, user] = await ethers.getSigners();
-    const DepositBonusRewarder = await ethers.getContractFactory(
-      'DepositBonusRewarder'
+    const MultiplierRewarderOwnable = await ethers.getContractFactory(
+      'MultiplierRewarderOwnable'
     );
     impersonatedSigner = await ethers.getImpersonatedSigner(accountAddress);
-    const rewardToken = new Contract(
-      confData.rewardToken,
-      erc20Abi,
-      impersonatedSigner
-    );
-    const rewarder = await DepositBonusRewarder.deploy(
-      '1000000000000000000000000000000',
-      '1000000000000000000',
-      '86400',
-      confData.rewardToken,
-      reliquaryContractInstance.address
-    );
-    const rewarderContractInstance = await rewarder.deployed();
+  const multiplierRewarderOwnable = await MultiplierRewarderOwnable.deploy(
+    confData.rewarders[0].rewardMultiplier,
+    confData.rewarders[0].rewarderToken,
+    reliquaryContractInstance.address
+  );
+    const rewarderContractInstance = await multiplierRewarderOwnable.deployed();
     console.log('rewarderContractInstance', rewarderContractInstance.address);
-    const minTx = await rewardToken.mint(
+    const minTx = await rewardTokenContractInstance.mint(
       rewarderContractInstance.address,
       '1000000000000000000000000000000'
     );

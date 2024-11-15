@@ -3,7 +3,7 @@
   "symbol": "slCHIMP",
   "weth": "0xb7a15563250f69DfF2d87DB3B6cA53108d0bC362",
   "multisig": "0xD19f62b5A721747A04b969C90062CBb85D4aAaA8",
-  "rewardToken": "0x49218437200B2DfEeb19bFCb03F5a1Be2A4adECe",
+  "rewardToken": "0xa7cEa1DBB0De18e484538217e42f21D2248AF335",
   "emissionRate": "10000000000",
   "pools": [
     {
@@ -20,7 +20,7 @@
         350
       ],
       "name": "slCHIMP",
-      "poolToken": "0x2d8A2553Ad2Cf716269535Df5cF6b8B3c7ed8674",
+      "poolToken": "0x9552364621Ec176EB182108c346Cbb95C8cd0e3E",
       "requiredMaturities": [
         0,
         86400,
@@ -39,7 +39,7 @@
     {
       "parentIndex": -1,
       "rewardMultiplier": "1000000000000000000",
-      "rewarderToken": "0x49218437200B2DfEeb19bFCb03F5a1Be2A4adECe"
+      "rewarderToken": "0xa7cEa1DBB0De18e484538217e42f21D2248AF335"
     }
   ]
 }
