@@ -48,7 +48,7 @@ const config = {
     },
     tentest: {
       chainId: 443,
-      url: 'https://testnet.ten.xyz/v1/?token=0x75bd79f5112feec7bdb11e7f00090dda0c47bdea',
+      url: 'https://testnet.ten.xyz/v1/?token=C09351F8DF49E8ED47069B4873655E32A3A4B6BC',
       accounts: [`0x${PRIVATE_KEY}`],
       // allowUnlimitedContractSize: true,
     },
